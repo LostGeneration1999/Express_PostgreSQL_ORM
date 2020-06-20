@@ -8,10 +8,10 @@ router.get('/', function (req, res, next) {
 
   client.connect()
     .then(() => console.log("Connected successfuly"))
-    .then(() => client.query("select * from chat"))
+    .then(() => client.query("select * from chat order by timestamp desc"))
     .then(function (results) {
       console.table(results.rows)
-      res.render('index', { title: 'セレクト', sql_result: JSON.stringify(results.rows)})
+      res.render('index', { title: 'セレクト', sql_result: results.rows})
     })
     .catch((e => console.log(e)))
     .finally((() => client.end()))

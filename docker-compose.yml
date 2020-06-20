@@ -14,25 +14,13 @@ services:
       DB_USER: postgres
       DB_HOST: database
       DB_PORT: 5432
-      DB_NAME: youmu
+      DB_NAME: test_db
 
   database:
     image: postgres:12.3
     volumes:
       - ./init-sql:/docker-entrypoint-initdb.d:ro
     environment:
-      POSTGRES_DB: youmu
+      POSTGRES_DB: test_db
+      TZ: "Asia/Tokyo"
       POSTGRES_HOST_AUTH_METHOD: trust
-
-  pgadmin4:
-    image: dpage/pgadmin4:3.3
-    container_name: pgadmin4
-    ports:
-      - 80:80
-    volumes:
-      - ./pgadmin:/var/lib/pgadmin/storage
-    environment:
-      PGADMIN_DEFAULT_EMAIL: root
-      PGADMIN_DEFAULT_PASSWORD: root
-    hostname: pgadmin4
-    restart: always

@@ -10,10 +10,10 @@ router.get('/', function (req, res, next) {
   client.connect()
     .then(() => console.log("Connected successfuly"))
     .then(() => client.query(`INSERT INTO chat (timestamp, comment) VALUES( now(), '${msg}' );`))
-    .then(() => client.query(`SELECT * FROM chat;` ))
+    .then(() => client.query(`SELECT * FROM chat order by timestamp desc;` ))
     .then(function (results) {
       console.table(results.rows)
-      res.render('index', { title: 'インサート', sql_result: JSON.stringify(results.rows) })
+      res.render('index', { title: 'インサート', sql_result: results.rows })
     })
     .catch((e => console.log(e)))
     .finally((() => client.end()))
