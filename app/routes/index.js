@@ -6,15 +6,6 @@ router.get('/', function (req, res, next) {
 
   const client = require("../db_client").pg_client()
 
-  let sql_result = 'None'
-  // client.connect()
-  //   .then(() => console.log("Connected successfuly"))
-  //   .then(() => client.query("select * from chat"))
-  //   .then(results => 
-  //     console.table(results.rows)
-  //   )
-  //   .catch((e => console.log(e)))
-  //   .finally((() => client.end()))
   client.connect()
     .then(() => console.log("Connected successfuly"))
     .then(() => client.query("select * from chat"))

@@ -17,7 +17,7 @@ services:
       DB_NAME: youmu
 
   database:
-    image: postgres:9.6
+    image: postgres:12.3
     volumes:
       - ./init-sql:/docker-entrypoint-initdb.d:ro
     environment:
