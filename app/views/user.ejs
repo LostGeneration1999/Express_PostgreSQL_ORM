@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User表示</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <h1>ユーザー一覧</h1>
+    <% for (let user of userData) { %>
+      <p>UserName： <%= user.firstName %><%= user.lastName %></p>
+      <p>Email： <%= user.email %></p>
+    <% } %>
+
+  </body>
+</html>
